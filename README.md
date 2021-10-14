@@ -1,2 +1,2 @@
 # InlamingJavascript1
- INLämningsuppgift 1 Grundläggande Javascript
+ Inlämningsuppgift 1 Grundläggande Javascript
