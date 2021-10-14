@@ -1,0 +1,54 @@
+body {
+  font-family: "Open Sans", verdana, sans-serif;
+  font-size: 1em;
+  color: #333333;
+}
+
+#content {
+  max-width: 82.5em;
+  margin: 1em auto;
+  padding: 0.5em;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.task {
+  display: inline-block;
+  border: 1px solid black;
+  width: 25em;
+  height: 25em;
+  margin: 0.5em;
+  padding: 0.5em;
+  vertical-align: top;
+  text-align: left;
+}
+
+.target {
+  width: 52.5em;
+}
+
+.task button {
+  display: block;
+  padding: 1em;
+  background-color: palegreen;
+}
+
+input.number {
+  display: inline;
+  width: 3em;
+}
+
+textarea {
+  width: 22em;
+  height: 5em;
+}
+
+.result {
+  font-family: "Times New Roman";
+  margin: 0.5em;
+}
+
+#hiddenButton {
+  visibility: hidden;
+  background-color: red;
+}

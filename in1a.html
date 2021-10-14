@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <title>Inlämning 1a Javascript</title>
+    <meta http-equiv="content-type" content="text/html, charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Web test" />
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <meta name="author" content="Thomas Månsson" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="in1a.css" />
+  </head>
+  <body>
+    <div id="content">
+      <div class="task">
+        <h3>Uppgift 1a - 1</h3>
+        <p>
+          I dessa uppgifter ska funktioner eller procedurer som du skriver
+          anropas vid knapptryckningar.
+        </p>
+        <p>
+          Skriv här ett hälsningsmeddelande till användaren och visa aktuell tid
+          genom att använda objektet Date() vid knapptryckning.
+        </p>
+        <p>Använd en alertbox för denna uppgift.</p>
+        <button name="button1" type="button">Knapp 1</button>
+      </div>
+
+      <div class="task">
+        <h3>Uppgift 1a - 2</h3>
+        <p>
+          Visa en prompt och låt användaren skriva in en godtycklig sträng.
+          Spara strängen i en global variabel.
+        </p>
+        <p>
+          Visa en alert-box med strängen som den skrevs in men med stora
+          bokstäver.
+        </p>
+        <p>
+          <em
+            >Obs: på den globala variabeln ska inte skiftläget förändras till
+            stora bokstäver.</em
+          >
+        </p>
+        <button name="button2" type="button">Knapp 2</button>
+      </div>
+
+      <div class="task">
+        <h3>Uppgift 1a - 3</h3>
+        <p>
+          Om inputen från funktionen i Knapp2 sparats i global variabel, så
+          kommer den globala variabeln att finnas kvar om du fyllt i den och
+          inte laddat om sidan. Den ska inte ha ändrats till versaler.
+        </p>
+        <p>
+          Skriv den globala variabeln (dvs input från prompten från förra
+          knappen) till elementet "result3" vid knapptryckning på denna knapp.
+        </p>
+        <button name="button3" type="button">Knapp 3</button>
+
+        <div id="result3" class="result">Här är elementet result3</div>
+      </div>
+      <div class="task">
+        <h3>Uppgift 1a - 4</h3>
+        <p>
+          Date-objektet kan användas för att ta tid på ett enkelt sätt i
+          JavaScript. Genom att skapa två olika Date-objekt vid två olika
+          tidpunkter och helt enkelt subtrahera det första från det andra fås
+          tidsskillnaden uttryckt i millisekunder.
+        </p>
+        <p>
+          Vi ska skapa en tidtagare <em>utan</em> att använda globala variabler.
+          Resultatet visar vi i en alert-box uttryckt i sekunder.
+        </p>
+        <button name="button4" type="button">Knapp 4</button>
+      </div>
+
+      <div class="task">
+        <h3>Uppgift 1a - 5</h3>
+        <p>
+          I denna uppgift ska användaren fylla i två textrutor (deras id är
+          number1 och number2) och trycka på knappen.
+        </p>
+        <p>
+          Ifall båda är positiva tal och under 1000 ska de multipliceras. Om
+          något är negativt eller ej under 1000, eller ej ett tal, så ska ett
+          felmeddelande visas. All output ska visas i elementet "result5" nedan.
+        </p>
+        <input id="number1" class="number" type="text" />
+        <input id="number2" class="number" type="text" />
+        <button name="button5" type="button">Knapp 5</button>
+        <div id="result5" class="result">Här är elementet result5</div>
+      </div>
+
+      <div class="task">
+        <h3>Uppgift 1a - 6</h3>
+        <p>
+          I denna uppgift ska användaren skriva eller kopiera in text och en
+          knapptryckning ska denna gång anropa en funktion som räknar orden. För
+          enkelhets skull räknas inte komma-tecken, punkt osv. Det betyder att
+          du ska kunna räkna ut antalet ord genom att använda dig av
+          mellanslagen.
+        </p>
+
+        <textarea rows="2" id="textInput"> </textarea>
+
+        <button name="button6" type="button">Knapp 6</button>
+
+        <p class="result">Antal ord: <span id="wordCount">0</span></p>
+      </div>
+
+      <div class="task">
+        <h3>Uppgift 1a - 7</h3>
+        <p>
+          När knappen trycks på ska en prompt be användaren att fylla i ett
+          meddelande. En alertbox ska skriva ut detta meddelande 10 gånger.
+          Använd en for-loop.
+        </p>
+        <p>
+          <em
+            >Obs du ska inte visa 10 st alertboxar, utan visa meddelandet 10
+            gånger i samma alertbox</em
+          >
+        </p>
+        <button name="button7" type="button">Knapp 7</button>
+      </div>
+
+      <div class="task">
+        <h3>Uppgift 1a - 8</h3>
+        <p>
+          När knappen trycks så ska en ny knapp dyka upp efter den första. När
+          den första trycks på igen ska den nya knappen försvinna igen (toggle).
+        </p>
+        <p><em>(Den nya knappen finns redan men är osynlig.)</em></p>
+
+        <button name="button8" type="button">Knapp 8</button>
+        <button id="hiddenButton" type="button" class="red">
+          Don't Press!
+        </button>
+      </div>
+
+      <div class="task"></div>
+
+      <div class="task">
+        <h3>Uppgift 1a - 9</h3>
+        <p>
+          Visa en tabell med data som användaren skriver in. Låt kommatecken (,)
+          fungera som avgränsare. Tabellen ska vara sju celler bred och visas i
+          nästa ruta i diven "tabell".
+        </p>
+        <textarea id="arrayInput"> </textarea>
+        <button name="button9" type="button">Knapp 9</button>
+      </div>
+      <div class="task target">
+        <div class="result">Resultat-tabel</div>
+        <div id="tableContainer"></div>
+      </div>
+    </div>
+    <script type="text/javascript" src="in1a.js"></script>
+  </body>
+</html>
