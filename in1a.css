@@ -8,7 +8,6 @@ body {
   max-width: 82.5em;
   margin: 1em auto;
   padding: 0.5em;
-  border: 1px solid black;
   text-align: center;
 }
 
@@ -24,7 +23,7 @@ body {
 }
 
 .target {
-  width: 52.5em;
+  width: 96%;
 }
 
 .task button {
