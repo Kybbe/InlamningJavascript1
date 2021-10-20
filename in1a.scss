@@ -1,0 +1,95 @@
+body {
+  font-family: "Open Sans", verdana, sans-serif;
+  font-size: 1em;
+  color: #333333;
+}
+
+#content {
+  max-width: 82.5em;
+  margin: 1em auto;
+  padding: 0.5em;
+  text-align: center;
+}
+
+.task {
+  display: inline-block;
+  border: 1px solid black;
+  width: 25em;
+  height: 25em;
+  margin: 0.5em;
+  padding: 0.5em;
+  vertical-align: top;
+  text-align: left;
+  box-shadow: 2px 2px 4px grey;
+  border-radius: 10px;
+}
+
+.target {
+  width: 96%;
+  height: 100%;
+  min-height: 25em !important;
+}
+
+.task button {
+  display: block;
+  padding: 1em;
+  border-radius: 10px;
+  background-color: palegreen;
+}
+
+input.number {
+  display: inline;
+  width: 3em;
+}
+
+textarea {
+  width: 100%;
+  height: 5em;
+}
+
+.result {
+  font-family: "Times New Roman";
+  margin: 0.5em;
+}
+
+#hiddenButton {
+  visibility: hidden;
+  background-color: red;
+}
+
+#spinningText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  overflow: hidden;
+}
+ul {
+  margin: 0;
+  list-style: none;
+  font-size: 4vw;
+  transform-style: preserve-3d;
+  animation: three-dimensions-circle 30s linear infinite;
+}
+li {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: linear-gradient(45deg, rgba(181,174,178,1) 0%, rgba(255,101,202,1) 25%, rgba(53,221,255,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+@for $i from 1 through 18 {
+  li:nth-child(#{$i}) {
+    transform: translate(-50%, -50%) rotate(#{$i * 20 - 20}deg) translateY(-260px) rotateX(90deg);
+  }
+}
+@keyframes three-dimensions-circle {
+  0% {
+    transform: rotateX(-100deg) rotate(0);
+  }
+  100% {
+    transform: rotateX(-100deg) rotate(-360deg);
+  }
+}

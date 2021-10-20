@@ -1,16 +1,16 @@
-var namn = "Klicka på Knapp 2 först och skriv in ditt namn tack!"
+var namn = "Klicka på Knapp 2 först och skriv in ditt namn tack!"; // För uppgift 3, om man inte klickat på knapparna i ordning så är inte namn inskrivet.
 
 // Uppgift 1a1:
 function buttonAction1() {
-  var currentdate = new Date(); 
-  var time = currentdate.getHours() + ":";
+  let currentdate = new Date(); 
+  let time = currentdate.getHours() + ":";
   if(currentdate.getMinutes() <= 9 ){
     time += "0" + currentdate.getMinutes()
   } else {
     time += currentdate.getMinutes();
   }
 
-  alert("Hejsan! Tid och datum är : " + time)
+  alert("Hejsan! Klockan är " + time + "!");
 }
 
 // Uppgift 1a2 här:
@@ -21,9 +21,11 @@ function buttonAction2() {
     buttonAction2();
     return;
   }
-  var namnUpperCase = namn.toUpperCase();
+  let namnUpperCase = namn.toUpperCase();
 
   alert(namnUpperCase + " är ett jättefint namn!");
+
+  namn +=  " var namnet du skrev in på uppgift 2.";
 }
 
 // Uppgift 1a3 här:
@@ -31,43 +33,70 @@ function buttonAction3() {
   document.getElementById("result3").innerHTML = namn;
 }
 
+let startTime;
+let elapsedTime = 0;
+
 // Uppgift 1a4 här:
 function buttonAction4() {
-  
+  let result = document.getElementById("result4");
+  if(startTime == undefined) {
+    startTime = Date.now() - elapsedTime;
+    result.innerHTML = "Klicka igen för att stoppa tidtagaren.";
+  } else {
+    let svar = timeToString(Date.now() - startTime)
+    alert(svar);
+    result.innerHTML = svar;
+    startTime = undefined;
+  }
+}
+
+function timeToString(time) {
+  let diffInHrs = time / 3600000;
+  let hh = Math.floor(diffInHrs);
+
+  let diffInMin = (diffInHrs - hh) * 60;
+  let mm = Math.floor(diffInMin);
+
+  let diffInSec = (diffInMin - mm) * 60;
+  let ss = Math.floor(diffInSec);
+
+  let diffInMs = (diffInSec - ss) * 100;
+  let ms = Math.floor(diffInMs);
+
+  let formattedMM = mm.toString().padStart(2, "0");
+  let formattedSS = ss.toString().padStart(2, "0");
+  let formattedMS = ms.toString().padStart(2, "0");
+
+  return `${formattedMM}:${formattedSS}:${formattedMS}`;
 }
 
 // Uppgift 1a5 här:
 function buttonAction5() {
-  number1 = document.getElementById("number1")
-  number2 = document.getElementById("number2")
+  let n1 = document.getElementById("number1").value;
+  let n2 = document.getElementById("number2").value;
 
   if(
-    number1.value >= 0 
-    && number1.value <= 1000 
-    && number1.value != "" 
-    
-    && number2.value >= 0 
-    && number2.value <= 1000
-    && number2.value != "" 
+    n1 >= 0 && n2 >= 0
+    && n1 <= 1000 && n2 <= 1000 
+    && n1 != "" && n2 != ""
     ){
-    document.getElementById("result5").innerHTML = (parseFloat(number1.value) + parseFloat(number2.value));
+    document.getElementById("result5").innerHTML = (parseFloat(n1) + parseFloat(n2));
   } else {
-    alert("Något gick fel! Endast siffror mellan 0 & 1000 är godkända.")
-  }
+    alert("Något gick fel! Endast siffror mellan 0 & 1000 är godkända.");
+  };
 }
 
 // Uppgift 1a6 här:
 function buttonAction6() {
-  let textInput = document.getElementById("textInput").value
-  let wordcounter = document.getElementById("wordCount")
+  let textInput = document.getElementById("textInput").value;
+  let wordcounter = document.getElementById("wordCount");
   let spaces = 0;
 
   for (let i = 0; i < textInput.length; i++) {
       if (textInput[i] == " ") {
           spaces += 1;
-      }
-  }
-
+      };
+  };
   spaces += 1; 
   
   wordcounter.innerHTML = spaces;
@@ -75,14 +104,14 @@ function buttonAction6() {
 
 // Uppgift 1a7 här:
 function buttonAction7() {
-  let msg = window.prompt("Skriv ett meddelande som ska repeteras 10 ggr: ")
+  let msg = window.prompt("Skriv ett meddelande som ska repeteras 10 ggr: ");
   let duplicatedMsg = "";
 
   for (let i = 0; i < 10; i++) {
     duplicatedMsg += msg + " \n ";
-  }
+  };
 
-  alert(duplicatedMsg)
+  alert(duplicatedMsg);
 } 
 
 // Uppgift 1a8 här:
@@ -93,32 +122,36 @@ function buttonAction8() {
     hiddenButton.style.visibility = null;
   } else {
     hiddenButton.style.visibility = "visible";
-  }
+  };
 }
 
 // Sista proceduren: Placera data i en tabell som byggs upp
 function buttonAction9() {
-  let input9 = document.getElementById("arrayInput").value;
-  let result = document.getElementById("tableContainer");
-  let inputArr = input9.split(",")
-  const rows = Math.floor(inputArr.length / 7) + 1;
-  var shouldBreak;
+  let input9 = document.getElementById("arrayInput").value; // Där användaren skriver.
+  let result = document.getElementById("tableContainer"); // Resultat "rutan".
+  result.innerHTML = "" // Så vi tömmer rutan när användaren redan klickat en gång.
+  let inputArr = input9.split(",") // Separera ut alla inputs vid "," och gör ny lista.
+  inputArr = inputArr.filter((a) => a); // Ta bort alla null, undefined och tomma celler.
+
+  const rows = Math.floor(inputArr.length / 7) + 1; // För att snabbt kolla hur många rader som behövs.
+  
+  const tbl = document.createElement("table");
 
   for (let i = 0; i < rows; i++) {
+    const tr = tbl.insertRow();
+
     for (let j = 0; j < 7; j++){
       if(inputArr[0] != undefined) {
-        result.innerHTML += inputArr[0] + " "
+        const td = tr.insertCell();
+        td.style.border = '1px solid black';
+        td.appendChild(document.createTextNode(inputArr[0]));
         inputArr.splice(0, 1)
       } else {
-        shouldBreak = true;
+        result.appendChild(tbl);
         return;
-      }
-    }
-    if(!shouldBreak) {
-      result.innerHTML += "<br>"
-    }
-
-  }
+      };
+    };
+  };
 }
 
 /*
@@ -147,54 +180,3 @@ function onDoneLoadingHtml() {
  * köra funktionen onDoneLoadingHtml
  */
 window.onload = onDoneLoadingHtml;
-
-
-
-
-
-
-// Declare variables to use in our functions below
-
-let startTime;
-let elapsedTime = 0;
-let timerInterval;
-
-function timeToString(time) {
-  let diffInHrs = time / 3600000;
-  let hh = Math.floor(diffInHrs);
-
-  let diffInMin = (diffInHrs - hh) * 60;
-  let mm = Math.floor(diffInMin);
-
-  let diffInSec = (diffInMin - mm) * 60;
-  let ss = Math.floor(diffInSec);
-
-  let diffInMs = (diffInSec - ss) * 100;
-  let ms = Math.floor(diffInMs);
-
-  let formattedMM = mm.toString().padStart(2, "0");
-  let formattedSS = ss.toString().padStart(2, "0");
-  let formattedMS = ms.toString().padStart(2, "0");
-
-  return `${formattedMM}:${formattedSS}:${formattedMS}`;
-}
-
-// Create function to modify innerHTML
-
-function print(txt) {
-  document.getElementById("result3").innerHTML = txt;
-}
-
-// Create "start", "pause" and "reset" functions
-
-function start() {
-  startTime = Date.now() - elapsedTime;
-  timerInterval = setInterval(function printTime() {
-    elapsedTime = Date.now() - startTime;
-    print(timeToString(elapsedTime));
-  }, 10);
-}
-
-function pause() {
-  clearInterval(timerInterval);
-}
