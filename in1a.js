@@ -33,20 +33,24 @@ function buttonAction3() {
   document.getElementById("result3").innerHTML = namn;
 }
 
-let startTime;
-let elapsedTime = 0;
-
 // Uppgift 1a4 här:
+
 function buttonAction4() {
   let result = document.getElementById("result4");
-  if(startTime == undefined) {
-    startTime = Date.now() - elapsedTime;
-    result.innerHTML = "Klicka igen för att stoppa tidtagaren.";
-  } else {
+  let startTime = Date.now();
+  result.innerHTML = "Klicka igen för att stoppa tidtagaren.";
+  clickedTwice(startTime, result);
+  startTime = undefined;
+}
+
+function clickedTwice(startTime, result) {
+  document.getElementsByName("button4")[0].onclick = function() {
     let svar = timeToString(Date.now() - startTime)
+
     alert(svar);
     result.innerHTML = svar;
-    startTime = undefined;
+
+    document.getElementsByName("button4")[0].onclick = buttonAction4;
   }
 }
 
