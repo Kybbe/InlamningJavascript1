@@ -43,7 +43,7 @@ input.number {
 }
 
 textarea {
-  width: 100%;
+  width: calc(100% - 0.5em);
   height: 5em;
 }
 
@@ -64,6 +64,7 @@ textarea {
   height: 30vh;
   overflow: hidden;
 }
+
 ul {
   margin: 0;
   list-style: none;
@@ -71,6 +72,7 @@ ul {
   transform-style: preserve-3d;
   animation: three-dimensions-circle 30s linear infinite;
 }
+
 li {
   position: absolute;
   top: 50%;
