@@ -34,7 +34,6 @@ function buttonAction3() {
 }
 
 // Uppgift 1a4 här:
-
 function buttonAction4() {
   let result = document.getElementById("result4");
   let startTime = Date.now();
@@ -46,7 +45,6 @@ function buttonAction4() {
 function clickedButton4Twice(startTime, result) {
   document.getElementsByName("button4")[0].onclick = function() {
     let svar = timeToString(Date.now() - startTime)
-
     alert(svar);
     result.innerHTML = svar;
 
@@ -84,7 +82,7 @@ function buttonAction5() {
     && n1 <= 1000 && n2 <= 1000 
     && n1 != "" && n2 != ""
     ){
-    document.getElementById("result5").innerHTML = (parseFloat(n1) + parseFloat(n2));
+    document.getElementById("result5").innerHTML = (parseFloat(n1) * parseFloat(n2));
   } else {
     alert("Något gick fel! Endast siffror mellan 0 & 1000 är godkända.");
   };
