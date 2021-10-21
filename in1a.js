@@ -39,11 +39,11 @@ function buttonAction4() {
   let result = document.getElementById("result4");
   let startTime = Date.now();
   result.innerHTML = "Klicka igen för att stoppa tidtagaren.";
-  clickedTwice(startTime, result);
+  clickedButton4Twice(startTime, result);
   startTime = undefined;
 }
 
-function clickedTwice(startTime, result) {
+function clickedButton4Twice(startTime, result) {
   document.getElementsByName("button4")[0].onclick = function() {
     let svar = timeToString(Date.now() - startTime)
 
@@ -112,7 +112,7 @@ function buttonAction7() {
   let duplicatedMsg = "";
 
   for (let i = 0; i < 10; i++) {
-    duplicatedMsg += msg + " \n ";
+    duplicatedMsg += "#" + (i + 1) + " " + msg + "\n";
   };
 
   alert(duplicatedMsg);
@@ -177,6 +177,7 @@ function onDoneLoadingHtml() {
   document.getElementById("hiddenButton").onclick = function () {
     alert("Neeeej!, \n du startade precis...\nKaffekokaren!");
   };
+  makeBackground();
 }
 
 /*
@@ -184,3 +185,20 @@ function onDoneLoadingHtml() {
  * köra funktionen onDoneLoadingHtml
  */
 window.onload = onDoneLoadingHtml;
+
+function makeBackground() {
+  let container = document.getElementById("background");
+  let letters = container.children;
+
+  for(i = 0; i < letters.length; i++){
+    setRandomLocation(letters[i])
+  }
+}
+
+function setRandomLocation(letter) {
+  x = Math.random() * document.documentElement.clientWidth;
+  y = Math.random() * document.documentElement.clientHeight;
+
+  letter.style.top = (y - 60) + "px";
+  letter.style.left = (x - 230) + "px";
+}
