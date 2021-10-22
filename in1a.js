@@ -76,32 +76,31 @@ function timeToString(time) {
 function buttonAction5() {
   let n1 = document.getElementById("number1").value;
   let n2 = document.getElementById("number2").value;
-
+  
   if(
     n1 >= 0 && n2 >= 0
     && n1 <= 1000 && n2 <= 1000 
     && n1 != "" && n2 != ""
     ){
-    document.getElementById("result5").innerHTML = (parseFloat(n1) * parseFloat(n2));
+    document.getElementById("result5").innerHTML = n1 * n2;
   } else {
     alert("Något gick fel! Endast siffror mellan 0 & 1000 är godkända.");
-  };
+  }; 
 }
 
 // Uppgift 1a6 här:
 function buttonAction6() {
   let textInput = document.getElementById("textInput").value;
   let wordcounter = document.getElementById("wordCount");
-  let spaces = 0;
+  let words = 1;
 
   for (let i = 0; i < textInput.length; i++) {
-      if (textInput[i] == " ") {
-          spaces += 1;
-      };
+    if (textInput[i] == " ") {
+      words += 1;
+    };
   };
-  spaces += 1; 
   
-  wordcounter.innerHTML = spaces;
+  wordcounter.innerHTML = words;
 }
 
 // Uppgift 1a7 här:
@@ -147,7 +146,7 @@ function buttonAction9() {
         const td = tr.insertCell();
         td.style.border = '1px solid black';
         td.appendChild(document.createTextNode(inputArr[0]));
-        inputArr.splice(0, 1)
+        inputArr.splice(0, 1);
       } else {
         result.appendChild(tbl);
         return;
@@ -184,12 +183,13 @@ function onDoneLoadingHtml() {
  */
 window.onload = onDoneLoadingHtml;
 
+
+// För att ge bokstäverna J,A,C,O,B en "random" position.
 function makeBackground() {
-  let container = document.getElementById("background");
-  let letters = container.children;
+  let letters = document.getElementById("background").children;
 
   for(i = 0; i < letters.length; i++){
-    setRandomLocation(letters[i])
+    setRandomLocation(letters[i]);
   }
 }
 

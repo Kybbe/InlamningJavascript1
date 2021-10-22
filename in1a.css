@@ -18,7 +18,7 @@ html, body {
   display: inline;
   position: relative;
   font-size: 6em;
-  color: rgba(181, 174, 178, 0.3); }
+  color: rgba(174, 0, 255, 0.3); }
 
 #content {
   max-width: 82.5em;
@@ -38,7 +38,7 @@ html, body {
   -webkit-box-shadow: 2px 2px 4px grey;
           box-shadow: 2px 2px 4px grey;
   border-radius: 10px;
-  background-color: white; }
+  background-color: rgba(255, 255, 255, 0.75); }
 
 .target {
   width: 96%;
@@ -81,7 +81,7 @@ textarea {
   overflow: hidden;
   width: 600px;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.65);
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 20px; }
 
 ul {
