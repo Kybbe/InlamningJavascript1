@@ -65,6 +65,9 @@ textarea {
   font-family: "Times New Roman";
   margin: 0.5em; }
 
+#tableContainer td {
+  border: 1px solid black; }
+
 #hiddenButton {
   visibility: hidden;
   background-color: red; }

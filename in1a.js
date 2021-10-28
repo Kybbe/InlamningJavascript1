@@ -128,10 +128,10 @@ function buttonAction8() {
 
 // Sista proceduren: Placera data i en tabell som byggs upp
 function buttonAction9() {
-  let input9 = document.getElementById("arrayInput").value; // Där användaren skriver.
+  let input = document.getElementById("arrayInput").value; // Där användaren skriver.
   let result = document.getElementById("tableContainer"); // Resultat "rutan".
   result.innerHTML = "" // Så vi tömmer rutan när användaren redan klickat en gång.
-  let inputArr = input9.split(",") // Separera ut alla inputs vid "," och gör ny lista.
+  let inputArr = input.split(",") // Separera ut alla inputs vid "," och gör ny lista.
   inputArr = inputArr.filter((a) => a); // Ta bort alla null, undefined och tomma celler.
 
   const rows = Math.floor(inputArr.length / 7) + 1; // För att snabbt kolla hur många rader som behövs.
@@ -144,7 +144,6 @@ function buttonAction9() {
     for (let j = 0; j < 7; j++){
       if(inputArr[0] != undefined) {
         const td = tr.insertCell();
-        td.style.border = '1px solid black';
         td.appendChild(document.createTextNode(inputArr[0]));
         inputArr.splice(0, 1);
       } else {
