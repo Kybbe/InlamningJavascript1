@@ -16,7 +16,7 @@ function buttonAction1() {
 // Uppgift 1a2 här:
 function buttonAction2() {
   namn = window.prompt("Hej! Vad är ditt namn?");
-  if(namn == "") {
+  if(namn == "" || namn == null) {
     alert("Vänligen skriv in ditt namn!!");
     buttonAction2();
     return;
@@ -130,18 +130,19 @@ function buttonAction8() {
 function buttonAction9() {
   let input = document.getElementById("arrayInput").value; // Där användaren skriver.
   let result = document.getElementById("tableContainer"); // Resultat "rutan".
+  let maxLength = 7; // Uppgiften specificerar max 7 i en rad.
   result.innerHTML = "" // Så vi tömmer rutan när användaren redan klickat en gång.
   let inputArr = input.split(",") // Separera ut alla inputs vid "," och gör ny lista.
   inputArr = inputArr.filter((a) => a); // Ta bort alla null, undefined och tomma celler.
 
-  const rows = Math.floor(inputArr.length / 7) + 1; // För att snabbt kolla hur många rader som behövs.
+  const rows = Math.floor(inputArr.length / maxLength) + 1; // För att snabbt kolla hur många rader som behövs.
   
   const tbl = document.createElement("table");
 
   for (let i = 0; i < rows; i++) {
     const tr = tbl.insertRow();
 
-    for (let j = 0; j < 7; j++){
+    for (let j = 0; j < maxLength; j++){
       if(inputArr[0] != undefined) {
         const td = tr.insertCell();
         td.appendChild(document.createTextNode(inputArr[0]));
