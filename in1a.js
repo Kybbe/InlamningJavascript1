@@ -194,9 +194,11 @@ function makeBackground() {
 }
 
 function setRandomLocation(letter) {
-  x = Math.random() * document.documentElement.clientWidth;
-  y = Math.random() * document.documentElement.clientHeight;
-
+	let x = Math.random() * document.documentElement.clientWidth;
+  let y = Math.random() * document.documentElement.clientHeight;
+	let rotation = Math.random() * 360;
+	
+	letter.style.transform = "rotate(" + rotation + "deg)";
   letter.style.top = (y - 60) + "px";
   letter.style.left = (x - 230) + "px";
 }
