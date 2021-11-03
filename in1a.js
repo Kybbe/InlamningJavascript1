@@ -5,13 +5,13 @@ function buttonAction1() {
   let currentdate = new Date(); 
   let time = currentdate.getHours() + ":";
   if(currentdate.getMinutes() <= 9 ){
-    time += "0" + currentdate.getMinutes()
+    time += "0" + currentdate.getMinutes();
   } else {
     time += currentdate.getMinutes();
   }
 
   alert("Hejsan! Klockan är " + time + "!");
-}
+};
 
 // Uppgift 1a2 här:
 function buttonAction2() {
@@ -26,12 +26,12 @@ function buttonAction2() {
   alert(namnUpperCase + " är ett jättefint namn!");
 
   namn +=  " var namnet du skrev in på uppgift 2.";
-}
+};
 
 // Uppgift 1a3 här:
 function buttonAction3() {
   document.getElementById("result3").innerHTML = namn;
-}
+};
 
 // Uppgift 1a4 här:
 function buttonAction4() {
@@ -40,17 +40,17 @@ function buttonAction4() {
   result.innerHTML = "Klicka igen för att stoppa tidtagaren.";
   clickedButton4Twice(startTime, result);
   startTime = undefined;
-}
+};
 
 function clickedButton4Twice(startTime, result) {
   document.getElementsByName("button4")[0].onclick = function() {
-    let svar = timeToString(Date.now() - startTime)
+    let svar = timeToString(Date.now() - startTime);
     alert(svar);
     result.innerHTML = svar;
 
     document.getElementsByName("button4")[0].onclick = buttonAction4;
-  }
-}
+  };
+};
 
 function timeToString(time) {
   let diffInHrs = time / 3600000;
@@ -70,7 +70,7 @@ function timeToString(time) {
   let formattedMS = ms.toString().padStart(2, "0");
 
   return `${formattedMM}:${formattedSS}:${formattedMS}`;
-}
+};
 
 // Uppgift 1a5 här:
 function buttonAction5() {
@@ -86,7 +86,7 @@ function buttonAction5() {
   } else {
     alert("Något gick fel! Endast siffror mellan 0 & 1000 är godkända.");
   }; 
-}
+};
 
 // Uppgift 1a6 här:
 function buttonAction6() {
@@ -101,7 +101,7 @@ function buttonAction6() {
   };
   
   wordcounter.innerHTML = words;
-}
+};
 
 // Uppgift 1a7 här:
 function buttonAction7() {
@@ -113,7 +113,7 @@ function buttonAction7() {
   };
 
   alert(duplicatedMsg);
-} 
+} ;
 
 // Uppgift 1a8 här:
 function buttonAction8() {
@@ -124,7 +124,7 @@ function buttonAction8() {
   } else {
     hiddenButton.style.visibility = "visible";
   };
-}
+};
 
 // Sista proceduren: Placera data i en tabell som byggs upp
 function buttonAction9() {
@@ -139,21 +139,29 @@ function buttonAction9() {
   
   const tbl = document.createElement("table");
 
-  for (let i = 0; i < rows; i++) {
+  for (let i = 0; i < rows; i++) { // Gör en rad för varje row(s) som behövs
     const tr = tbl.insertRow();
 
-    for (let j = 0; j < maxLength; j++){
-      if(inputArr[0] != undefined) {
-        const td = tr.insertCell();
-        td.appendChild(document.createTextNode(inputArr[0]));
-        inputArr.splice(0, 1);
-      } else {
-        result.appendChild(tbl);
-        return;
+    for (let j = 0; j < 7; j++){ // Skapa en cell för varje del av inputArr, med max 7 i varje rad
+      if(inputArr[0] != undefined) { // Sålänge inte arrayen är tom, gör:
+        const td = tr.insertCell(); // Skapa cell
+        td.appendChild(document.createTextNode(inputArr[0])); // Lägg till texten i varje cell
+        inputArr.splice(0, 1); // Ta bort den "cellen" som vi skrev ut ur inputArr
+      } else { // När tabellen är fylld och inputArr är tom:
+        result.appendChild(tbl); // Pusha ut tabellen i result rutan
+        return; // avsluta funktionen.
       };
     };
   };
-}
+};
+
+function filterArray(inputArr) {
+  inputArr = inputArr.split(","); // Separera ut alla inputs vid "," och gör ny lista.
+  inputArr = inputArr.filter((a) => a); // Ta bort alla null, undefined och tomma celler.
+  inputArr = inputArr.filter(function(a){return a !== ' '});
+
+  return inputArr;
+};
 
 /*
  * Detta är en färdig procedur (funktion) som kopplar ihop händelsehanteraren
@@ -175,7 +183,7 @@ function onDoneLoadingHtml() {
     alert("Neeeej!, \n du startade precis...\nKaffekokaren!");
   };
   makeBackground();
-}
+};
 
 /*
  * Anger att när webläsaren är klar med att läsa in html, css ska den
@@ -186,19 +194,19 @@ window.onload = onDoneLoadingHtml;
 
 // För att ge bokstäverna J,A,C,O,B en "random" position.
 function makeBackground() {
-  let letters = document.getElementById("background").children;
+  let letters = document.getElementById("background").children; // Hitta alla bokstäver
 
-  for(i = 0; i < letters.length; i++){
-    setRandomLocation(letters[i]);
-  }
-}
+  for(i = 0; i < letters.length; i++){ // För varje bokstav
+    setRandomLocation(letters[i]); // Ge random top och left properties
+  };
+};
 
 function setRandomLocation(letter) {
-	let x = Math.random() * document.documentElement.clientWidth;
-  let y = Math.random() * document.documentElement.clientHeight;
+	let x = Math.random() * document.documentElement.clientWidth;// Siffra mellan 1 och max bredden av användarens skärm
+  let y = Math.random() * document.documentElement.clientHeight; // Samma för höjden
 	let rotation = Math.random() * 360;
 	
 	letter.style.transform = "rotate(" + rotation + "deg)";
   letter.style.top = (y - 60) + "px";
   letter.style.left = (x - 230) + "px";
-}
+};
